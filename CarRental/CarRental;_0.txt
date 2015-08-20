@@ -1,0 +1,1 @@
+{"_tempEmployer":{"_earnings":5285,"_cars":[{"_brand":"volvo","_model":"xc90","_costPerDay":45},{"_brand":"Volvo","_model":"XC90","_costPerDay":50},{"_brand":"Volvo","_model":"XC90","_costPerDay":50},{"_brand":"Volvo","_model":"XC90","_costPerDay":50}],"_name":"_","_id":"_"},"_queueFinished":[],"_cpu":[]}
