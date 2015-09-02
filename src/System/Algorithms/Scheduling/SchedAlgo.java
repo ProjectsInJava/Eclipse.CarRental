@@ -4,27 +4,49 @@ import java.util.Comparator;
 
 import System.Collections.Specialize.TransactionQueue;
 
-public abstract class SchedAlgo implements IServer{
-// region ******************************** MEMBERS ********************************
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SchedAlgo.
+ */
+public abstract class SchedAlgo implements IServer {
+	// region ******************************** MEMBERS
+	/** The _temp register. */
+	// ********************************
 	protected TransactionQueue _tempRegister;
+
+	/**
+	 * Order.
+	 */
+	public void order() {
+		_tempRegister.sort(Comparator.comparing(process -> process.GetTimeShift()));
+	}
 	// endregion
-// region ******************************** OVERLOADED ********************************
+
+	// endregion
+	// region ******************************** OVERLOADED
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see System.Algorithms.Scheduling.IServer#SupplyPull(java.lang.Object)
+	 */
+	// ********************************
 	@Override
 	public void SupplyPull(Object aValue) {
 		_tempRegister = (TransactionQueue) aValue;
 	}
 
+	// endregion
+	// region ******************************** ORDER
+	// ********************************
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see System.Algorithms.Scheduling.IServer#SupplyPush()
+	 */
 	@Override
 	public Object SupplyPush() {
 		order();
 		return _tempRegister;
 	}
-	
-	// endregion
-// region ******************************** ORDER ********************************
-	
-	public void order() {
-		_tempRegister.sort(Comparator.comparing(process -> process.GetTimeShift()));
-	}
-	// endregion
 }

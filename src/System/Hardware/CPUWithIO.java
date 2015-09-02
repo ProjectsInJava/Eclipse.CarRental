@@ -8,60 +8,92 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.gson.Gson;
+
 import System.Persons.IO;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CPUWithIO.
+ */
 @SuppressWarnings("serial")
-public class CPUWithIO extends CPUWithTime implements IO
-{
-	public String toString(){
-		String second = "";
+public class CPUWithIO extends CPUWithTime implements IO {
 
-		second = stream()
-			     .map(i -> i.toString())
-			     .collect(Collectors.joining(","));
-
-		return "[Clock:"+GetClock().getEpochSecond()+",Cores:"+second+",CoresSize:"+ size()+ "]";
-	}
-
-	public boolean LoadState() throws IOException{
-
-		Gson newGsonReader = new Gson();
-		
-		try
-		{
-		List<String> lines = Files.readAllLines(Paths.get(GetFolder()+"\\CPU_CPU.txt"), Charset.defaultCharset());
-		
-		for (String line : lines) {
-			init(newGsonReader.fromJson(line, this.getClass()));
-		}	
-		}
-		catch(IOException e)
-		{
-			return false;
-		}
-		
-		return true;
-	}
-	
-
-	private void init(CPUWithIO fromJson) {
-		super.init(fromJson.GetClock());
-		clear();
-		addAll(fromJson);
-	}
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see System.Persons.IO#GetFolder()
+	 */
 	@Override
 	public String GetFolder() {
 		return "CPU";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see System.Persons.IO#GetID()
+	 */
+	@Override
+	public String GetID() {
+		return "CPU";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see System.Persons.IO#GetName()
+	 */
 	@Override
 	public String GetName() {
 		return "CPU";
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see System.Persons.IO#LoadState()
+	 */
 	@Override
-	public String GetID() {
-		return "CPU";
+	public boolean LoadState() throws IOException {
+
+		final Gson newGsonReader = new Gson();
+
+		try {
+			final List<String> lines = Files.readAllLines(Paths.get(GetFolder() + "\\CPU_CPU.txt"),
+					Charset.defaultCharset());
+
+			for (final String line : lines)
+				init(newGsonReader.fromJson(line, this.getClass()));
+		} catch (final IOException e) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.util.AbstractCollection#toString()
+	 */
+	@Override
+	public String toString() {
+		String second = "";
+
+		second = stream().map(i -> i.toString()).collect(Collectors.joining(","));
+
+		return "[Clock:" + GetClock().getEpochSecond() + ",Cores:" + second + ",CoresSize:" + size() + "]";
+	}
+
+	/**
+	 * Inits the.
+	 *
+	 * @param fromJson
+	 *            the from json
+	 */
+	private void init(CPUWithIO fromJson) {
+		super.init(fromJson.GetClock());
+		clear();
+		addAll(fromJson);
 	}
 }

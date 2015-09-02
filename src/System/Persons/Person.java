@@ -1,36 +1,81 @@
 package System.Persons;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Person.
+ */
 public abstract class Person {
 
-	private String _name;
+	/** The _id. */
 	private String _id;
-	
-	public Person(){
+
+	/** The _name. */
+	private String _name;
+
+	/**
+	 * Instantiates a new person.
+	 */
+	public Person() {
 		_name = "_";
 		_id = "_";
 	}
 
-	public Person(String aName,String aID){
+	/**
+	 * Instantiates a new person.
+	 *
+	 * @param aName
+	 *            the a name
+	 * @param aID
+	 *            the a id
+	 */
+	public Person(String aName, String aID) {
 		_name = aName;
 		_id = aID;
 	}
-	
-	public void SetName(String aName){
-		_name = aName;
-	}
-	
-	public void SetID(String aID){
-		_id = aID;
-	}
-	
-	public String GetName(){
-		return _name;
-	}
-	
-	public String GetID(){
+
+	/**
+	 * Gets the id.
+	 *
+	 * @return the string
+	 */
+	public String GetID() {
 		return _id;
 	}
-	
+
+	/**
+	 * Gets the name.
+	 *
+	 * @return the string
+	 */
+	public String GetName() {
+		return _name;
+	}
+
+	/**
+	 * Sets the id.
+	 *
+	 * @param aID
+	 *            the a id
+	 */
+	public void SetID(String aID) {
+		_id = aID;
+	}
+
+	/**
+	 * Sets the name.
+	 *
+	 * @param aName
+	 *            the a name
+	 */
+	public void SetName(String aName) {
+		_name = aName;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
 		return "Person [_name=" + _name + ", _id=" + _id + "]";

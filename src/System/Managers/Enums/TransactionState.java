@@ -1,9 +1,23 @@
 package System.Managers.Enums;
 
-public enum TransactionState{
-	NEW,
-	READY,
+// TODO: Auto-generated Javadoc
+/**
+ * The Enum TransactionState.
+ */
+public enum TransactionState {
+
+	/** The active. */
 	ACTIVE,
+
+	/** The car. */
 	CAR,
+
+	/** The end. */
 	END,
+
+	/** The new. */
+	NEW,
+
+	/** The ready. */
+	READY,
 }

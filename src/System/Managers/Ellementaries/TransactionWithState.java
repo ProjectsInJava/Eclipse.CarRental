@@ -2,62 +2,114 @@ package System.Managers.Ellementaries;
 
 import System.Managers.Enums.TransactionState;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class TransactionWithState.
+ */
 public abstract class TransactionWithState {
 
+	/** The _state. */
 	TransactionState _state;
-	
-	protected TransactionWithState(){
+
+	/**
+	 * Instantiates a new transaction with state.
+	 */
+	protected TransactionWithState() {
 		init();
 	}
-	
-	private void init(){													
-		New();			
+
+	/**
+	 * Active.
+	 */
+	public void Active() {
+		_state = TransactionState.ACTIVE;
 	}
 
-//endregion
-// region ********************************* STATES *****************************************************************************
+	// endregion
+	// region ********************************* STATES
+	// *****************************************************************************
 
-	public void New(){														
-		_state = TransactionState.NEW;			
-	}
-
-	public void Ready(){														
-		_state = TransactionState.READY;			
-	}
-	
-	public void Active(){														
-		_state = TransactionState.ACTIVE;			
-	}
-	
-	public void Car(){
-		_state = TransactionState.CAR;		
-	}
-	
-	public void End(){														
-		_state = TransactionState.END;			
+	/**
+	 * Car.
+	 */
+	public void Car() {
+		_state = TransactionState.CAR;
 	}
 
-	public TransactionState GetState(){											
-		return _state;		
-	}
-
-	public int GetStateOrdinal(){											
-		return _state.ordinal();		
-	}	
-//	
-//	public static Consumer<ProcessMyWithState> ChangeStates(){
-//		return process -> process.handleStateChange();			
-//	}
-	
-	public int compareStatesTo(TransactionState arg0){ 						
+	/**
+	 * Compare states to.
+	 *
+	 * @param arg0
+	 *            the arg0
+	 * @return the int
+	 */
+	public int compareStatesTo(TransactionState arg0) {
 		return GetState().ordinal() - arg0.ordinal();
 	}
-	
-// endregion
-// region ********************************* STANDARD_METHODS ******************************** 
-	protected int compareTo(TransactionWithState arg0) {		
-		int first = GetStateOrdinal() - arg0.GetStateOrdinal() == 0 ? 0 : 1 ;
-			
-		return first ;
+
+	/**
+	 * End.
+	 */
+	public void End() {
+		_state = TransactionState.END;
+	}
+
+	/**
+	 * Gets the state.
+	 *
+	 * @return the transaction state
+	 */
+	public TransactionState GetState() {
+		return _state;
+	}
+
+	/**
+	 * Gets the state ordinal.
+	 *
+	 * @return the int
+	 */
+	public int GetStateOrdinal() {
+		return _state.ordinal();
+	}
+	//
+	// public static Consumer<ProcessMyWithState> ChangeStates(){
+	// return process -> process.handleStateChange();
+	// }
+
+	/**
+	 * New.
+	 */
+	public void New() {
+		_state = TransactionState.NEW;
+	}
+
+	/**
+	 * Ready.
+	 */
+	public void Ready() {
+		_state = TransactionState.READY;
+	}
+
+	// endregion
+	/**
+	 * Compare to.
+	 *
+	 * @param arg0
+	 *            the arg0
+	 * @return the int
+	 */
+	// region ********************************* STANDARD_METHODS
+	// ********************************
+	protected int compareTo(TransactionWithState arg0) {
+		final int first = GetStateOrdinal() - arg0.GetStateOrdinal() == 0 ? 0 : 1;
+
+		return first;
+	}
+
+	/**
+	 * Inits the.
+	 */
+	private void init() {
+		New();
 	}
 }
